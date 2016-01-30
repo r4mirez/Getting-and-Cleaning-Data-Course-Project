@@ -7,18 +7,18 @@ This is the Code Book for the Getting and Cleaning Data Course Project. This fil
 This file contains a data set that provides information about several measures of different features obtained with 30 subjects performing 6 different activities. tidyDataSet.txt contains the mean of the measures for every feature in each subject performing each activity (one mean in each row).
 
 ## Variables in tidyDataSet.txt
-* Activity: type of physical activity the subject was performing during the measurement.
-* Subject: ID number for the subject.
-* Feature: Kind of measure values taken for the current subject during the current activity.
-* Mean value: Mean of all the measures for the current feature, for the current subject during the current activity.
+ * Activity: type of physical activity the subject was performing during the measurement.
+ * Subject: ID number for the subject.
+ * Feature: Kind of measure values taken for the current subject during the current activity.
+ * Mean value: Mean of all the measures for the current feature, for the current subject during the current activity.
 
 # Activities:
-* WALKING
-* WALKING_UPSTAIRS
-* WALKING_DOWNSTAIRS
-* SITTING
-* STANDING
-* LAYING
+ * WALKING
+ * WALKING_UPSTAIRS
+ * WALKING_DOWNSTAIRS
+ * SITTING
+ * STANDING
+ * LAYING
 
 # Features code:
 * X/Y/Z: axis for movement.
