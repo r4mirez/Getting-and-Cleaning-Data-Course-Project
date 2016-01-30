@@ -1,11 +1,10 @@
-# Library loading, downloading source file and unzipping it.
+# Library loading and unzipping data (zip data file must be in the working directory).
 	library(plyr)
 	library(dplyr)
 	library(tidyr)
 	library(stringr)
 
-	download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "myData.zip")
-	unzip("myData.zip")
+	unzip("getdata_projectfiles_UCI HAR Dataset.zip")
 
 # STEPS:
 # ======
@@ -78,3 +77,6 @@
 	# each subject, performing each activity. The group_by() function groups the
 	# data by Activity, Subject and Feature. This last argument is needed as long
 	# as gather() function was used in step 4 for tidying the data.
+
+	# Writing the output file:
+	write.table(summDf, "tidyDataSet.txt", row.names = FALSE)
