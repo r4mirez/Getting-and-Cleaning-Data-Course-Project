@@ -58,25 +58,23 @@
 
 # 4.- Appropriately labels the data set with descriptive variable names. 
 	
-	# Shaping feature names so they have no points or excessive spaces.
+	# Shaping feature names so they have no points or spaces.
 	names(dfSel) <- gsub('\\.', " ", names(dfSel))
-	names(dfSel) <- gsub(" +", " ", names(dfSel))
 	names(dfSel) <- str_trim(names(dfSel))
+	names(dfSel) <- gsub(" +", "_", names(dfSel))
 
-	# Using the gather() function, the features are now included in one row.
-	finalDf <- gather(dfSel, key = Feature, value = value, -Subject, -Activity)
-	# Now, the data frame is tidier, more readable and easier to plot, as long as
-	# the different measured features are grouped in a column which can be used
-	# for separating facets when using ggplot2, for example.
+	# Now, the data set is tidy. It has one measured variable in each column and
+	# one observation in each row. The variable names are readable and easy to write.
 
 
-# 5.- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
-	summDf <- finalDf %>% group_by(Activity, Subject, Feature) %>% summarise("Mean value" = mean(value))
-	# This data frame shows the means of the measures for different feature, for
-	# each subject, performing each activity. The group_by() function groups the
-	# data by Activity, Subject and Feature. This last argument is needed as long
-	# as gather() function was used in step 4 for tidying the data.
+# 5.- From the data set in step 4, creates a second, independent tidy data set
+# with the average of each variable for each activity and each subject.
+	
+	summDf <- dfSel %>% group_by(Activity, Subject) %>% summarise_each(funs(mean))
+	# This data frame shows the means of the measures for each subject
+	# performing each activity. The group_by() function groups the
+	# data by Activity and Subject and Feature. summarise_each() summarise the
+	# grouped data using the mean() function for each measured variable.
 
 	# Writing the output file:
 	write.table(summDf, "tidyDataSet.txt", row.names = FALSE)
